@@ -30,6 +30,9 @@ export const CLINIC = {
   // Foto principal del inicio (ruta dentro de /public); null muestra una ilustración con huellitas.
   photo: 'images/hero-vernet.jpg' as string | null,
   email: 'veterinariavernet@gmail.com',
+  // Texto de presentación para Nosotros (en primera persona).
+  about:
+    'En Veterinaria Vernet somos un centro de atención animal ubicado en pleno corazón de Monte Grande, partido de Esteban Echeverría, sobre la Avenida Luis Vernet al 2118. Somos una clínica veterinaria con presencia consolidada en la zona sur del Gran Buenos Aires: ofrecemos servicios de salud para perros, gatos y otras mascotas, junto con un surtido petshop que permite resolver varias necesidades en un mismo lugar. Nuestra ubicación es estratégica, frente a una parada de colectivo sobre una avenida de alto tránsito, y eso nos convierte en una opción de fácil acceso tanto para vecinos de la localidad como para quienes vienen de barrios cercanos.',
   servicesSummary: 'consultas, vacunación, cirugías y más para tu mascota',
   paymentMethods: [] as string[],
   hoursSummary: 'Lunes a sábado de 10 a 13 y de 17 a 20 hs',
@@ -127,10 +130,28 @@ export interface TeamMember {
   name: string | null;
   photo: string | null;
   bio?: string;
+  /** Verdadero para las tarjetas de mascotas: cambia los textos del recuadro de foto. */
+  mascota?: boolean;
 }
 
-// Equipo. Nombres y fotos: A CONFIRMAR con la veterinaria.
-export const TEAM: TeamMember[] = [{ role: 'Médicos veterinarios', name: null, photo: null }];
+// Nosotros: el equipo y dos tarjetas con espacio para fotos de los pacientes. Nombres y fotos: A CONFIRMAR con la veterinaria.
+export const TEAM: TeamMember[] = [
+  { role: 'Médicos veterinarios', name: null, photo: null },
+  {
+    role: 'Pacientes caninos',
+    name: null,
+    photo: null,
+    mascota: true,
+    bio: 'Acá compartimos las fotos de los perros que nos eligen para cuidar su salud.',
+  },
+  {
+    role: 'Pacientes felinos',
+    name: null,
+    photo: null,
+    mascota: true,
+    bio: 'Acá compartimos las fotos de los gatos que nos eligen para cuidar su salud.',
+  },
+];
 
 export interface ServiceItem {
   id: string;

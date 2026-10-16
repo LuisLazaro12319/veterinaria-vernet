@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight, MapPin, Star, UserRound } from 'lucide-react';
+import { ChevronLeft, ChevronRight, MapPin, PawPrint, UserRound } from 'lucide-react';
 import { CLINIC, TEAM } from '../data/clinicData';
 
 const rutaFoto = (foto: string | null) => (foto ? `${import.meta.env.BASE_URL}${foto}` : null);
@@ -81,15 +81,15 @@ export const ProfessionalSection: React.FC = () => {
                           ) : (
                             <div className="w-full h-full bg-gradient-to-br from-violet-50 to-purple-100 flex flex-col items-center justify-center gap-2 text-violet-400">
                               <div className="w-24 h-24 rounded-full border-2 border-dashed border-violet-300 flex items-center justify-center">
-                                <UserRound className="w-11 h-11" />
+                                {m.mascota ? <PawPrint className="w-11 h-11" /> : <UserRound className="w-11 h-11" />}
                               </div>
-                              <span className="text-xs font-semibold">Foto del integrante</span>
+                              <span className="text-xs font-semibold">{m.mascota ? 'Foto de la mascota' : 'Foto del integrante'}</span>
                             </div>
                           )}
                         </div>
                         <div className="relative -mt-8 mx-6 rounded-2xl bg-white shadow-xl shadow-violet-900/10 border border-purple-100 px-5 py-4 text-center">
                           <h3 className={`text-xl font-extrabold ${m.name ? 'text-slate-900' : 'text-slate-400 italic'}`}>
-                            {m.name ?? 'Nombre y apellido'}
+                            {m.name ?? (m.mascota ? 'Nombre de la mascota' : 'Nombre y apellido')}
                           </h3>
                           <p className="text-sm text-violet-700 font-semibold mt-0.5">
                             {`${m.role} · ${CLINIC.name}`}
@@ -108,9 +108,9 @@ export const ProfessionalSection: React.FC = () => {
                             {CLINIC.locality}
                           </span>
                         </h3>
+                        <p className="text-lg text-slate-600 leading-relaxed mb-4">{CLINIC.about}</p>
                         <p className="text-lg text-slate-600 leading-relaxed mb-7">
-                          En {CLINIC.name} te atiende {CLINIC.professional}. Escribinos por WhatsApp para contarnos qué
-                          necesitás y coordinar tu turno.
+                          Escribinos por WhatsApp para contarnos qué necesita tu mascota y coordinar tu turno.
                         </p>
 
                         <div className="hidden md:flex flex-wrap items-center gap-3 text-sm font-semibold mb-8">
@@ -139,7 +139,7 @@ export const ProfessionalSection: React.FC = () => {
                         onClick={() => irA(1)}
                         className="hidden md:inline-flex items-center gap-1.5 px-5 py-3.5 text-sm font-bold text-violet-800 bg-purple-50 hover:bg-purple-100 border border-purple-200 rounded-xl transition-colors cursor-pointer"
                       >
-                        <span>Conocé al equipo</span>
+                        <span>Mirá a nuestros pacientes</span>
                         <ChevronRight className="w-4 h-4" />
                       </button>
                     )}
