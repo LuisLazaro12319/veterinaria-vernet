@@ -107,8 +107,20 @@ export interface Review {
   text: string;
 }
 
-// Todavía no se leyeron las opiniones de Google de esta veterinaria: la sección de opiniones no se muestra.
-export const REVIEWS: Review[] = [];
+// Extractos textuales de opiniones públicas de la ficha de Google Maps (107 opiniones, 4,4).
+export const REVIEWS: Review[] = [
+  {
+    author: 'Jose G.',
+    text: 'Lo recomiendo tuve un accidente con mi gato lo mordió muy mal, nuestra perra y no solo lo curaron sino también me explicaron muy bien como hacer todo el seguimiento... La verdad que hay que resaltar que el precio es muy accesible.',
+  },
+  {
+    author: 'Brenda R.',
+    text: 'Lleve durante unos meses a mi perrito, la doctora y la atención son muy amables. Nunca conocí a alguien tan humana y profesional, es muy difícil encontrar profesionales como ella…',
+  },
+  { author: 'Gisela R.', text: 'Muy bien me explicaron cómo desparasitar a mis perritas. Me atendió muy amable.' },
+  { author: null, text: 'Excelente atención muy buena doctora y buenos precios' },
+  { author: null, text: 'La fui a llevar ahí a varias mascotas varias veces siempre todo muy bien.' },
+];
 
 export interface TeamMember {
   role: string;

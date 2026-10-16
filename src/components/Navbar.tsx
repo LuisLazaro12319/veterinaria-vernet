@@ -8,6 +8,7 @@ const LINKS = [
   { href: '#top', label: 'Inicio' },
   { href: '#tratamientos', label: 'Servicios' },
   { href: '#profesional', label: 'Nosotros' },
+  { href: '#opiniones', label: 'Opiniones' },
   { href: '#turnos', label: 'Turnos' },
   { href: '#ubicacion', label: 'Dónde estamos' },
 ];

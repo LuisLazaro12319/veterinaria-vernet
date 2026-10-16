@@ -21,3 +21,26 @@
     display: none;
   }
 }
+
+/* Insignias del inicio: flotan suavemente, como si levitaran. Se desactiva si la persona pidió menos movimiento. */
+@keyframes levitar {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+.levitar {
+  animation: levitar 3.6s ease-in-out infinite;
+}
+.levitar-b {
+  animation: levitar 4.2s ease-in-out -1.6s infinite;
+}
+@media (prefers-reduced-motion: reduce) {
+  .levitar,
+  .levitar-b {
+    animation: none;
+  }
+}

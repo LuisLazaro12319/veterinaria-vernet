@@ -107,7 +107,7 @@ export const Hero: React.FC = () => {
             )}
           </div>
 
-          <div className="absolute top-5 right-3 sm:-right-3 lg:-right-4 rounded-2xl bg-violet-900 text-white px-4 py-3 shadow-xl shadow-violet-950/30 text-center">
+          <div className="levitar absolute top-5 right-3 sm:-right-3 lg:-right-4 rounded-2xl bg-violet-900 text-white px-4 py-3 shadow-xl shadow-violet-950/30 text-center">
             <div className="flex items-center justify-center gap-1.5 text-2xl font-extrabold leading-none">
               <Star className="w-5 h-5 fill-amber-300 text-amber-300" />
               <span>{CLINIC.googleRating.replace('.', ',')}</span>
@@ -115,7 +115,7 @@ export const Hero: React.FC = () => {
             <div className="text-[10px] font-bold uppercase tracking-wider text-violet-200 mt-1">en Google</div>
           </div>
 
-          <div className="absolute bottom-5 left-3 sm:-left-3 lg:-left-4 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-xl shadow-violet-900/15">
+          <div className="levitar-b absolute bottom-5 left-3 sm:-left-3 lg:-left-4 flex items-center gap-3 rounded-2xl bg-white px-4 py-3 shadow-xl shadow-violet-900/15">
             <span className="w-10 h-10 shrink-0 rounded-full bg-teal-50 text-teal-600 flex items-center justify-center">
               <HeartHandshake className="w-5 h-5" />
             </span>
