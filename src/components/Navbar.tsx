@@ -102,13 +102,18 @@ export const Navbar: React.FC = () => {
             onClick={irArriba}
             className="flex items-center gap-3 text-violet-950 transition-opacity hover:opacity-95 shrink-0"
           >
-            {/* Marca provisoria: huellita. Cuando la veterinaria mande su logo se reemplaza por la imagen. */}
-            <span
-              aria-hidden="true"
-              className="w-10 h-10 shrink-0 rounded-full bg-white/60 text-violet-700 flex items-center justify-center shadow-inner"
-            >
-              <PawPrint className="w-5 h-5" />
-            </span>
+            {/* Logo sin marco: el blanco se difumina hacia el degradado del menú, sin línea divisoria. */}
+            <img
+              src={`${import.meta.env.BASE_URL}images/logo-marca.png`}
+              alt={`Logo de ${CLINIC.name}`}
+              width={64}
+              height={64}
+              className="w-16 h-16 -my-3 -mr-1 object-contain shrink-0"
+              style={{
+                WebkitMaskImage: 'radial-gradient(closest-side, #000 80%, transparent 100%)',
+                maskImage: 'radial-gradient(closest-side, #000 80%, transparent 100%)',
+              }}
+            />
             <div className="flex flex-col">
               <span className="text-xl sm:text-2xl font-extrabold tracking-tight text-violet-950 leading-none">
                 {CLINIC.name}

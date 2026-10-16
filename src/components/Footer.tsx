@@ -10,6 +10,18 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           <div className="space-y-3">
+            <img
+              src={`${import.meta.env.BASE_URL}images/logo-marca.png`}
+              alt={`Logo de ${CLINIC.name}`}
+              loading="lazy"
+              width={96}
+              height={96}
+              className="w-24 h-24 -ml-4"
+              style={{
+                WebkitMaskImage: 'radial-gradient(closest-side, #000 80%, transparent 100%)',
+                maskImage: 'radial-gradient(closest-side, #000 80%, transparent 100%)',
+              }}
+            />
             <div className="text-lg font-bold text-violet-950">{CLINIC.name}</div>
             <p className="text-violet-900 leading-relaxed">Veterinaria: {CLINIC.servicesSummary}.</p>
             <p className="text-xs font-semibold text-violet-900 pt-1">Seguinos para enterarte de promos y sorteos</p>
