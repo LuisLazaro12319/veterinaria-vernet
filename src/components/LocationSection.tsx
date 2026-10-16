@@ -2,6 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Camera, Check, ChevronLeft, ChevronRight, Clock, Copy, ExternalLink, MapPin, Navigation } from 'lucide-react';
 import { BRANCHES, CLINIC, SCHEDULE, getClinicStatus, horarioLineas, sedeTxt, whatsappUrl } from '../data/clinicData';
 import { WhatsAppIcon } from './BrandIcons';
+import { animarScroll, useArrastreMouse } from '../lib/carrusel';
 import { useSucursal } from '../data/sucursalElegida';
 
 const rutaFoto = (foto: string | null) => (foto ? `${import.meta.env.BASE_URL}${foto}` : null);
@@ -9,6 +10,7 @@ const rutaFoto = (foto: string | null) => (foto ? `${import.meta.env.BASE_URL}${
 /** Sección de sucursales: una cinta deslizable con foto, mapa y datos de cada una. */
 export const LocationSection: React.FC = () => {
   const pista = useRef<HTMLDivElement>(null);
+  useArrastreMouse(pista);
   const [activo, setActivo] = useState(0);
   const { indice, elegir } = useSucursal();
   const [copiada, setCopiada] = useState<string | null>(null);
@@ -37,7 +39,7 @@ export const LocationSection: React.FC = () => {
     const el = pista.current;
     if (!el) return;
     const destino = Math.max(0, Math.min(BRANCHES.length - 1, i));
-    el.scrollTo({ left: destino * el.clientWidth, behavior: 'smooth' });
+    animarScroll(el, destino * el.clientWidth);
   };
 
   const copiar = (id: string, direccion: string) => {
@@ -96,7 +98,7 @@ export const LocationSection: React.FC = () => {
         <div
           ref={pista}
           onScroll={alScrollear}
-          className="no-scrollbar -mx-4 sm:-mx-6 lg:-mx-8 flex overflow-x-auto snap-x snap-mandatory scroll-smooth"
+          className="no-scrollbar -mx-4 sm:-mx-6 lg:-mx-8 flex overflow-x-auto snap-x snap-mandatory md:cursor-grab"
         >
           {BRANCHES.map((b, i) => {
             const foto = rutaFoto(b.photo);

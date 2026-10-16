@@ -1,11 +1,13 @@
 import React, { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, MapPin, PawPrint, UserRound } from 'lucide-react';
 import { CLINIC, PACIENTES_FOTOS, TEAM } from '../data/clinicData';
+import { animarScroll, useArrastreMouse } from '../lib/carrusel';
 
 const rutaFoto = (foto: string | null) => (foto ? `${import.meta.env.BASE_URL}${foto}` : null);
 
 export const ProfessionalSection: React.FC = () => {
   const pista = useRef<HTMLDivElement>(null);
+  useArrastreMouse(pista);
   const [activo, setActivo] = useState(0);
 
   const alScrollear = () => {
@@ -18,7 +20,7 @@ export const ProfessionalSection: React.FC = () => {
     const el = pista.current;
     if (!el) return;
     const destino = Math.max(0, Math.min(TEAM.length - 1, i));
-    el.scrollTo({ left: destino * el.clientWidth, behavior: 'smooth' });
+    animarScroll(el, destino * el.clientWidth);
   };
 
   return (
@@ -48,7 +50,7 @@ export const ProfessionalSection: React.FC = () => {
         <div
           ref={pista}
           onScroll={alScrollear}
-          className="no-scrollbar -mx-4 sm:-mx-6 lg:-mx-8 flex overflow-x-auto snap-x snap-mandatory scroll-smooth"
+          className="no-scrollbar -mx-4 sm:-mx-6 lg:-mx-8 flex overflow-x-auto snap-x snap-mandatory md:cursor-grab"
         >
           {TEAM.map((m, i) => {
             const foto = rutaFoto(m.photo);

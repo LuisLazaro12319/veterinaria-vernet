@@ -19,6 +19,7 @@ import {
 } from 'lucide-react';
 import { CLINIC, SERVICES, sedeTxt, whatsappUrl, type ServiceItem } from '../data/clinicData';
 import { useSucursal } from '../data/sucursalElegida';
+import { animarScroll, useArrastreMouse } from '../lib/carrusel';
 
 // Clases escritas completas para que Tailwind las detecte.
 const ESTILOS: Record<ServiceItem['icon'], { icon: React.ReactNode; badge: string; barra: string; link: string }> = {
@@ -208,6 +209,7 @@ const POR_PAGINA = 6;
 const GrillaServicios: React.FC = () => {
   const { sucursal } = useSucursal();
   const pista = useRef<HTMLDivElement>(null);
+  useArrastreMouse(pista);
   const [activa, setActiva] = useState(0);
 
   const paginas = Array.from({ length: Math.ceil(SERVICES.length / POR_PAGINA) }, (_, i) =>
@@ -224,7 +226,7 @@ const GrillaServicios: React.FC = () => {
     const el = pista.current;
     if (!el) return;
     const destino = Math.max(0, Math.min(paginas.length - 1, i));
-    el.scrollTo({ left: destino * el.clientWidth, behavior: 'smooth' });
+    animarScroll(el, destino * el.clientWidth);
   };
 
   return (
@@ -232,7 +234,7 @@ const GrillaServicios: React.FC = () => {
       <div
         ref={pista}
         onScroll={alScrollear}
-        className="no-scrollbar flex overflow-x-auto snap-x snap-mandatory scroll-smooth"
+        className="no-scrollbar flex overflow-x-auto snap-x snap-mandatory md:cursor-grab"
       >
         {paginas.map((pagina, p) => (
           <div key={p} className="basis-full w-full min-w-0 grow-0 shrink-0 snap-center px-3 py-3">
