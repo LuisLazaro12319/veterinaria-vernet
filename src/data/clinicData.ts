@@ -136,7 +136,14 @@ export interface TeamMember {
 
 // Fotos de los pacientes (ruta dentro de /public). Mientras esté vacía se muestran 6 cuadros reservados;
 // cada foto que se agregue ocupa un cuadro (siempre queda un mínimo de 6).
-export const PACIENTES_FOTOS: string[] = [];
+export const PACIENTES_FOTOS: string[] = [
+  'images/paciente-1.jpg',
+  'images/paciente-2.jpg',
+  'images/paciente-3.jpg',
+  'images/paciente-4.jpg',
+  'images/paciente-5.jpg',
+  'images/paciente-6.jpg',
+];
 
 // Nosotros: el equipo y una tarjeta de pacientes con cuadros para fotos. Nombres y fotos: A CONFIRMAR con la veterinaria.
 export const TEAM: TeamMember[] = [

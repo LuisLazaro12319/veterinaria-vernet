@@ -84,7 +84,7 @@ export const ProfessionalSection: React.FC = () => {
                               src={rutaFoto(src) ?? undefined}
                               alt={`Paciente de ${CLINIC.name}`}
                               loading="lazy"
-                              className="w-full aspect-square object-cover rounded-2xl shadow-lg shadow-violet-900/10"
+                              className="w-full aspect-square object-cover object-[50%_25%] rounded-2xl shadow-lg shadow-violet-900/10"
                             />
                           ) : (
                             <div className="w-full aspect-square rounded-2xl border-2 border-dashed border-violet-200 bg-gradient-to-br from-violet-50 to-purple-100 flex flex-col items-center justify-center gap-1.5 text-violet-400">
