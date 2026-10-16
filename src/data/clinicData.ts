@@ -147,7 +147,8 @@ export const PACIENTES_FOTOS: string[] = [
 
 // Nosotros: el equipo y una tarjeta de pacientes con cuadros para fotos. Nombres y fotos: A CONFIRMAR con la veterinaria.
 export const TEAM: TeamMember[] = [
-  { role: 'Médicos veterinarios', name: null, photo: null },
+  // A CONFIRMAR con la veterinaria: el nombre sale de un apodo ("Fer") que vio Luis; apellido y título pendientes.
+  { role: 'Médica veterinaria', name: 'Fernanda', photo: 'images/hero-vernet.jpg' },
   {
     role: 'Nuestros pacientes',
     name: null,
