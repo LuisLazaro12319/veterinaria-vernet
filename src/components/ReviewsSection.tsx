@@ -112,7 +112,7 @@ export const ReviewsSection: React.FC = () => {
               </div>
               <p className="text-slate-700 leading-relaxed mb-6 flex-1">&ldquo;{r.text}&rdquo;</p>
               <div className="flex items-center justify-between gap-3 pt-4 border-t border-slate-100">
-                <span className="text-sm font-bold text-slate-900">{r.author ?? 'Paciente'}</span>
+                <span className="text-sm font-bold text-slate-900">{r.author ?? 'Cliente'}</span>
                 <span className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500">
                   <GoogleG className="w-4 h-4" />
                   Opinión en Google
