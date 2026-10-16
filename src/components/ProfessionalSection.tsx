@@ -1,6 +1,6 @@
 import React, { useRef, useState } from 'react';
 import { ChevronLeft, ChevronRight, MapPin, PawPrint, UserRound } from 'lucide-react';
-import { CLINIC, TEAM } from '../data/clinicData';
+import { CLINIC, PACIENTES_FOTOS, TEAM } from '../data/clinicData';
 
 const rutaFoto = (foto: string | null) => (foto ? `${import.meta.env.BASE_URL}${foto}` : null);
 
@@ -54,6 +54,52 @@ export const ProfessionalSection: React.FC = () => {
             const foto = rutaFoto(m.photo);
             const principal = i === 0;
             const titulo = m.name ?? m.role;
+
+            /* Tarjeta de pacientes: varios cuadros para fotos de perros y gatos, sin tarjeta de nombre. */
+            if (m.galeria) {
+              const cuadros = Array.from({ length: Math.max(6, PACIENTES_FOTOS.length) }, (_, k) => PACIENTES_FOTOS[k] ?? null);
+              return (
+                <div
+                  key={m.role}
+                  className="basis-full w-full min-w-0 grow-0 shrink-0 snap-center px-4 sm:px-6 lg:px-8 py-10"
+                >
+                  <div className="max-w-5xl mx-auto text-center">
+                    <p className="mb-5">
+                      <span className="inline-block px-3.5 py-1.5 rounded-full bg-violet-50 text-violet-700 border border-purple-200 text-xs font-bold uppercase tracking-wider">
+                        {m.role}
+                      </span>
+                    </p>
+                    <h3 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-slate-900 tracking-tight mb-4">
+                      Perros, gatos y{' '}
+                      <span className="bg-gradient-to-r from-violet-600 to-purple-500 bg-clip-text text-transparent">
+                        otras mascotas
+                      </span>
+                    </h3>
+                    {m.bio && <p className="text-lg text-slate-600 leading-relaxed mb-8 max-w-2xl mx-auto">{m.bio}</p>}
+                    <ul className="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-5">
+                      {cuadros.map((src, k) => (
+                        <li key={k}>
+                          {src ? (
+                            <img
+                              src={rutaFoto(src) ?? undefined}
+                              alt={`Paciente de ${CLINIC.name}`}
+                              loading="lazy"
+                              className="w-full aspect-square object-cover rounded-2xl shadow-lg shadow-violet-900/10"
+                            />
+                          ) : (
+                            <div className="w-full aspect-square rounded-2xl border-2 border-dashed border-violet-200 bg-gradient-to-br from-violet-50 to-purple-100 flex flex-col items-center justify-center gap-1.5 text-violet-400">
+                              <PawPrint className="w-9 h-9 sm:w-11 sm:h-11" />
+                              <span className="text-xs font-semibold">Foto del paciente</span>
+                            </div>
+                          )}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              );
+            }
+
             return (
               <div
                 key={m.role}
@@ -81,15 +127,15 @@ export const ProfessionalSection: React.FC = () => {
                           ) : (
                             <div className="w-full h-full bg-gradient-to-br from-violet-50 to-purple-100 flex flex-col items-center justify-center gap-2 text-violet-400">
                               <div className="w-24 h-24 rounded-full border-2 border-dashed border-violet-300 flex items-center justify-center">
-                                {m.mascota ? <PawPrint className="w-11 h-11" /> : <UserRound className="w-11 h-11" />}
+                                <UserRound className="w-11 h-11" />
                               </div>
-                              <span className="text-xs font-semibold">{m.mascota ? 'Foto de la mascota' : 'Foto del integrante'}</span>
+                              <span className="text-xs font-semibold">Foto del integrante</span>
                             </div>
                           )}
                         </div>
                         <div className="relative -mt-8 mx-6 rounded-2xl bg-white shadow-xl shadow-violet-900/10 border border-purple-100 px-5 py-4 text-center">
                           <h3 className={`text-xl font-extrabold ${m.name ? 'text-slate-900' : 'text-slate-400 italic'}`}>
-                            {m.name ?? (m.mascota ? 'Nombre de la mascota' : 'Nombre y apellido')}
+                            {m.name ?? 'Nombre y apellido'}
                           </h3>
                           <p className="text-sm text-violet-700 font-semibold mt-0.5">
                             {`${m.role} · ${CLINIC.name}`}

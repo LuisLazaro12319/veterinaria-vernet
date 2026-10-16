@@ -130,26 +130,23 @@ export interface TeamMember {
   name: string | null;
   photo: string | null;
   bio?: string;
-  /** Verdadero para las tarjetas de mascotas: cambia los textos del recuadro de foto. */
-  mascota?: boolean;
+  /** Verdadero para la tarjeta de pacientes: muestra varios cuadros de fotos en lugar de la tarjeta con nombre. */
+  galeria?: boolean;
 }
 
-// Nosotros: el equipo y dos tarjetas con espacio para fotos de los pacientes. Nombres y fotos: A CONFIRMAR con la veterinaria.
+// Fotos de los pacientes (ruta dentro de /public). Mientras esté vacía se muestran 6 cuadros reservados;
+// cada foto que se agregue ocupa un cuadro (siempre queda un mínimo de 6).
+export const PACIENTES_FOTOS: string[] = [];
+
+// Nosotros: el equipo y una tarjeta de pacientes con cuadros para fotos. Nombres y fotos: A CONFIRMAR con la veterinaria.
 export const TEAM: TeamMember[] = [
   { role: 'Médicos veterinarios', name: null, photo: null },
   {
-    role: 'Pacientes caninos',
+    role: 'Nuestros pacientes',
     name: null,
     photo: null,
-    mascota: true,
-    bio: 'Acá compartimos las fotos de los perros que nos eligen para cuidar su salud.',
-  },
-  {
-    role: 'Pacientes felinos',
-    name: null,
-    photo: null,
-    mascota: true,
-    bio: 'Acá compartimos las fotos de los gatos que nos eligen para cuidar su salud.',
+    galeria: true,
+    bio: 'Estas son algunas de las mascotas que nos eligen para cuidar su salud.',
   },
 ];
 
