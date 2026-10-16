@@ -1,5 +1,5 @@
 import React from 'react';
-import { MapPin } from 'lucide-react';
+import { Mail, MapPin } from 'lucide-react';
 import { BRANCHES, CLINIC, HAS_SCHEDULE, SCHEDULE, SOCIALS, horarioLineas } from '../data/clinicData';
 import { InstagramIcon, WhatsAppIcon } from './BrandIcons';
 import { ICONOS_REDES } from './redes';
@@ -80,6 +80,12 @@ export const Footer: React.FC = () => {
                 <WhatsAppIcon className="w-4 h-4 text-violet-800 shrink-0" />
                 <a href={`https://wa.me/${CLINIC.whatsappNumber}`} target="_blank" rel="noopener noreferrer" className="hover:text-violet-950">
                   {CLINIC.whatsappDisplay}
+                </a>
+              </li>
+              <li className="flex items-center gap-2">
+                <Mail className="w-4 h-4 text-violet-800 shrink-0" />
+                <a href={`mailto:${CLINIC.email}`} className="hover:text-violet-950 break-all">
+                  {CLINIC.email}
                 </a>
               </li>
               <li className="flex items-center gap-2">

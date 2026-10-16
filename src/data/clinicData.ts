@@ -28,10 +28,11 @@ export const CLINIC = {
   googleNote: 'Opiniones de clientes en Google',
   googleScope: '',
   // Foto principal del inicio (ruta dentro de /public); null muestra una ilustración con huellitas.
-  photo: null as string | null,
+  photo: 'images/hero-vernet.jpg' as string | null,
+  email: 'veterinariavernet@gmail.com',
   servicesSummary: 'consultas, vacunación, cirugías y más para tu mascota',
   paymentMethods: [] as string[],
-  hoursSummary: '',
+  hoursSummary: 'Lunes a sábado de 10 a 13 y de 17 a 20 hs',
   headline: 'Salud y cariño',
   headlineHighlight: 'para tu mascota',
   locationLabel: 'Monte Grande',
@@ -80,9 +81,9 @@ export const BRANCHES: Branch[] = [
     mapQuery: '-34.7931366,-58.4821804',
     whatsapp: '5491154898302',
     whatsappDisplay: '11 5489-8302',
-    photo: null,
+    photo: 'images/sucursal-vernet.jpg',
     video: null,
-    showSchedule: false,
+    showSchedule: true,
   },
 ];
 
@@ -207,11 +208,19 @@ export interface ScheduleDay {
   close2?: string;
 }
 
-/** Falso hasta que la veterinaria confirme sus horarios: sin horarios no se muestra "Abierto ahora". */
-export const HAS_SCHEDULE = false;
+/** Falso si no se conocen los horarios: sin horarios no se muestra "Abierto ahora". */
+export const HAS_SCHEDULE = true;
 
-// Completar con los horarios reales cuando los confirme la veterinaria y poner HAS_SCHEDULE en true.
-export const SCHEDULE: ScheduleDay[] = [];
+// Horarios del perfil de WhatsApp Business de la veterinaria: lunes a sábado, mañana y tarde.
+export const SCHEDULE: ScheduleDay[] = [
+  { dayName: 'Lunes', dayIndex: 1, open: '10:00', close: '13:00', open2: '17:00', close2: '20:00' },
+  { dayName: 'Martes', dayIndex: 2, open: '10:00', close: '13:00', open2: '17:00', close2: '20:00' },
+  { dayName: 'Miércoles', dayIndex: 3, open: '10:00', close: '13:00', open2: '17:00', close2: '20:00' },
+  { dayName: 'Jueves', dayIndex: 4, open: '10:00', close: '13:00', open2: '17:00', close2: '20:00' },
+  { dayName: 'Viernes', dayIndex: 5, open: '10:00', close: '13:00', open2: '17:00', close2: '20:00' },
+  { dayName: 'Sábado', dayIndex: 6, open: '10:00', close: '13:00', open2: '17:00', close2: '20:00' },
+  { dayName: 'Domingo', dayIndex: 0, open: null, close: null },
+];
 
 /** Turnos del día como pares [desde, hasta]; vacío si está cerrado. */
 const turnosDelDia = (d?: ScheduleDay): [string, string][] => {
