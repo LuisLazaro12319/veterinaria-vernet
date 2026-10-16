@@ -34,7 +34,7 @@ export const Hero: React.FC = () => {
         className="absolute -bottom-24 -right-24 w-96 h-96 rounded-full bg-teal-100/60 blur-3xl pointer-events-none"
       />
 
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-14 items-center">
+      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 lg:py-20 grid grid-cols-1 sm:grid-cols-2 gap-8 md:gap-10 lg:gap-14 items-center">
         {/* Texto */}
         <div>
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-violet-300 bg-white/80 text-xs font-bold uppercase tracking-wider text-violet-700 mb-6">
@@ -45,7 +45,7 @@ export const Hero: React.FC = () => {
           </div>
 
           <h1
-            className="text-4xl sm:text-5xl lg:text-6xl leading-[1.08] font-extrabold tracking-tight text-violet-950 mb-6"
+            className="text-4xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl leading-[1.08] font-extrabold tracking-tight text-violet-950 mb-6"
             style={{ textWrap: 'balance' }}
           >
             {CLINIC.headline}{' '}
@@ -54,15 +54,15 @@ export const Hero: React.FC = () => {
             </span>
           </h1>
 
-          <p className="text-lg sm:text-xl text-slate-600 leading-relaxed mb-8 max-w-xl">
+          <p className="text-base sm:text-sm md:text-base lg:text-lg xl:text-xl text-slate-600 leading-relaxed mb-8 max-w-xl">
             Veterinaria en {CLINIC.locality}: {CLINIC.servicesSummary}. Pedí tu turno por WhatsApp.
           </p>
 
-          <div className="flex flex-wrap items-center gap-3 sm:gap-4 mb-10">
+          <div className="flex flex-wrap items-center gap-3 mb-8 lg:mb-10">
             <a
               href="#turnos"
               onClick={irA('turnos')}
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 text-sm sm:px-7 sm:py-4 sm:text-base font-bold text-white bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 rounded-xl shadow-lg shadow-violet-500/30 transition-all hover:-translate-y-0.5 whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm md:px-5 md:py-3 lg:px-7 lg:py-4 lg:text-base font-bold text-white bg-gradient-to-r from-violet-600 to-purple-600 hover:from-violet-700 hover:to-purple-700 rounded-xl shadow-lg shadow-violet-500/30 transition-all hover:-translate-y-0.5 whitespace-nowrap"
             >
               <CalendarClock className="w-4 h-4 sm:w-5 sm:h-5" />
               <span>Reservar turno</span>
@@ -70,7 +70,7 @@ export const Hero: React.FC = () => {
             <a
               href="#ubicacion"
               onClick={irA('ubicacion')}
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 text-sm sm:px-7 sm:py-4 sm:text-base font-semibold text-violet-900 bg-white hover:bg-violet-50 border border-violet-200 rounded-xl shadow-md shadow-violet-900/10 transition-all hover:-translate-y-0.5 whitespace-nowrap"
+              className="inline-flex items-center justify-center gap-2 px-4 py-2.5 text-sm md:px-5 md:py-3 lg:px-7 lg:py-4 lg:text-base font-semibold text-violet-900 bg-white hover:bg-violet-50 border border-violet-200 rounded-xl shadow-md shadow-violet-900/10 transition-all hover:-translate-y-0.5 whitespace-nowrap"
             >
               <MapPin className="w-4 h-4 sm:w-5 sm:h-5" />
               <span>Cómo llegar</span>
@@ -80,18 +80,18 @@ export const Hero: React.FC = () => {
           {/* Cifras reales, con divisores verticales */}
           <dl className="grid grid-cols-3 max-w-xl divide-x divide-violet-200">
             {CIFRAS.map((c, i) => (
-              <div key={c.etiqueta} className={i === 0 ? 'pr-4 sm:pr-6' : 'px-4 sm:px-6'}>
+              <div key={c.etiqueta} className={i === 0 ? 'pr-3 lg:pr-6' : 'px-3 lg:px-6'}>
                 <dt className="sr-only">{c.etiqueta}</dt>
-                <dd className="text-2xl sm:text-3xl font-extrabold text-violet-700 leading-none mb-1.5">{c.valor}</dd>
-                <p className="text-[11px] sm:text-xs font-bold uppercase tracking-wider text-slate-500">{c.etiqueta}</p>
+                <dd className="text-xl md:text-2xl lg:text-3xl font-extrabold text-violet-700 leading-none mb-1.5">{c.valor}</dd>
+                <p className="text-[10px] md:text-[11px] lg:text-xs font-bold uppercase tracking-wider text-slate-500">{c.etiqueta}</p>
               </div>
             ))}
           </dl>
         </div>
 
         {/* Imagen con insignias flotantes */}
-        <div className="relative lg:pl-6">
-          <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-violet-900/20 aspect-[4/5] sm:aspect-[5/6] lg:aspect-[4/5] bg-gradient-to-br from-violet-300 via-violet-200 to-teal-200">
+        <div className="relative lg:pl-6 max-sm:max-w-md max-sm:mx-auto max-sm:w-full">
+          <div className="relative rounded-[2rem] overflow-hidden shadow-2xl shadow-violet-900/20 aspect-[4/5] bg-gradient-to-br from-violet-300 via-violet-200 to-teal-200">
             {foto ? (
               <img src={foto} alt={`${CLINIC.name}, ${CLINIC.locality}`} className="w-full h-full object-cover" />
             ) : (
